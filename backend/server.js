@@ -39,7 +39,7 @@ app.use("/api/auth", authRoutes);
 app.get("/", (req, res) => {
   res.status(200).json({
     success: true,
-    message: "ServicePOS Node.js API Running",
+    message: "Two Wheeler Showroom POS Backend Running",
   });
 });
 
@@ -47,7 +47,7 @@ app.get("/", (req, res) => {
 app.get("/api/health", (req, res) => {
   res.status(200).json({
     success: true,
-    message: "ServicePOS Backend Healthy",
+    message: "Two Wheeler Showroom POS Backend Healthy",
     database: "Connected",
   });
 });
