@@ -1,0 +1,35 @@
+
+# Dependencies
+node_modules/
+**/node_modules/
+
+# Environment variables and secrets
+.env
+.env.*
+**/.env
+**/.env.*
+!.env.example
+!**/.env.example
+
+# Build files
+dist/
+build/
+coverage/
+
+# Python files
+__pycache__/
+*.py[cod]
+venv/
+.venv/
+
+# Logs
+*.log
+npm-debug.log*
+
+# Uploads - keep folder, not uploaded files
+backend/uploads/*
+!backend/uploads/.gitkeep
+
+# OS files
+.DS_Store
+Thumbs.db
