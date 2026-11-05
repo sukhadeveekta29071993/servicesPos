@@ -41,7 +41,7 @@ app.use("/api/auth", authRoutes);
 app.use("/api/admin", adminRoutes);
 app.use("/api/salesperson", salespersonRoutes);
 
-app.use("/api/customer", customerRoutes);
+app.use("/api/customers", customerRoutes);
 
 app.use("/api/users", userRoutes);
 // Test route

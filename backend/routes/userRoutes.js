@@ -2,15 +2,24 @@ const express = require("express");
 const router = express.Router();
 
 const { protect } = require("../middleware/authMiddleware");
-const { checkOwnership } = require("../middleware/checkOwnership");
+const { authorizeRoles } = require("../middleware/roleMiddleware");
 
-const { getCustomerProfile } = require("../controllers/customerController");
+const {
+  getCustomers,
+  getCustomerById,
+} = require("../controllers/customerController");
 
+// All routes require authentication
+router.use(protect);
+
+// Get all customers
+router.get("/customers", authorizeRoles("admin", "salesperson"), getCustomers);
+
+// Get customer by ID
 router.get(
-  "/:userId/profile",
-  protect,
-  checkOwnership("userId"),
-  getCustomerProfile,
+  "/customers/:id",
+  authorizeRoles("admin", "salesperson"),
+  getCustomerById,
 );
 
 module.exports = router;
