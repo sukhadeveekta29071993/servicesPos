@@ -9,6 +9,10 @@ const cookieParser = require("cookie-parser");
 const connectDB = require("./config/db");
 
 const authRoutes = require("./routes/authRoutes");
+const adminRoutes = require("./routes/adminRoutes");
+const salespersonRoutes = require("./routes/salespersonRoutes");
+const customerRoutes = require("./routes/customerRoutes");
+const userRoutes = require("./routes/userRoutes");
 
 const app = express();
 
@@ -34,7 +38,12 @@ app.use(cookieParser());
 app.use(morgan("dev"));
 
 app.use("/api/auth", authRoutes);
+app.use("/api/admin", adminRoutes);
+app.use("/api/salesperson", salespersonRoutes);
 
+app.use("/api/customer", customerRoutes);
+
+app.use("/api/users", userRoutes);
 // Test route
 app.get("/", (req, res) => {
   res.status(200).json({
