@@ -17,6 +17,7 @@ const vehicleRoutes = require("./routes/vehicleRoutes");
 const productRoutes = require("./routes/productRoutes");
 const vendorRoutes = require("./routes/vendorRoutes");
 const purchaseRoutes = require("./routes/purchaseRoutes");
+const inventoryRoutes = require("./routes/inventoryRoutes");
 
 const app = express();
 
@@ -53,6 +54,7 @@ app.use("/api/vehicles", vehicleRoutes);
 app.use("/api/products", productRoutes);
 app.use("/api/vendors", vendorRoutes);
 app.use("/api/purchases", purchaseRoutes);
+app.use("/api/inventory", inventoryRoutes);
 // Test route
 app.get("/", (req, res) => {
   res.status(200).json({
