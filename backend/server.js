@@ -14,6 +14,7 @@ const salespersonRoutes = require("./routes/salespersonRoutes");
 const customerRoutes = require("./routes/customerRoutes");
 const userRoutes = require("./routes/userRoutes");
 const vehicleRoutes = require("./routes/vehicleRoutes");
+const productRoutes = require("./routes/productRoutes");
 
 const app = express();
 
@@ -47,6 +48,8 @@ app.use("/api/customers", customerRoutes);
 app.use("/api/users", userRoutes);
 
 app.use("/api/vehicles", vehicleRoutes);
+app.use("/api/products", productRoutes);
+
 // Test route
 app.get("/", (req, res) => {
   res.status(200).json({
