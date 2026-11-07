@@ -75,21 +75,21 @@ const jobCardSchema = new mongoose.Schema(
       type: String,
       required: [true, "Customer complaint is required"],
       trim: true,
-      maxlength: 1000,
+      maxLength: 1000,
     },
 
     inspectionNotes: {
       type: String,
       default: "",
       trim: true,
-      maxlength: 2000,
+      maxLength: 2000,
     },
 
     workDescription: {
       type: String,
       default: "",
       trim: true,
-      maxlength: 2000,
+      maxLength: 2000,
     },
 
     estimatedCost: {
@@ -135,7 +135,7 @@ const jobCardSchema = new mongoose.Schema(
       type: String,
       default: "",
       trim: true,
-      maxlength: 1000,
+      maxLength: 1000,
     },
 
     createdBy: {

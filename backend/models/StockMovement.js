@@ -4,13 +4,13 @@ const stockMovementSchema = new mongoose.Schema(
   {
     product: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Product",
+      ref: "product",
       required: [true, "Product is required"],
     },
 
     inventory: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "Inventory",
+      ref: "inventory",
       required: [true, "Inventory is required"],
     },
 
