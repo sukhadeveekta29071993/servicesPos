@@ -27,6 +27,7 @@ const serviceBillingRoutes = require("./routes/serviceBillingRoutes");
 const counterBillingRoutes = require("./routes/counterBillingRoutes");
 const expenseRoutes = require("./routes/expenseRoutes");
 const reportRoutes = require("./routes/reportRoutes");
+const supplierPaymentRoutes = require("./routes/supplierPaymentRoutes");
 
 const app = express();
 
@@ -76,6 +77,9 @@ app.use("/api/service-billing", serviceBillingRoutes);
 app.use("/api/counter-billing", counterBillingRoutes);
 app.use("/api/expenses", expenseRoutes);
 app.use("/api/reports", reportRoutes);
+
+// Supplier Payment Routes
+app.use("/api/supplier-payments", supplierPaymentRoutes);
 // Test route
 app.get("/", (req, res) => {
   res.status(200).json({
