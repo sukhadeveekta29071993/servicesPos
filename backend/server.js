@@ -23,6 +23,7 @@ const vehicleUnitRoutes = require("./routes/vehicleUnitRoutes");
 const vehicleSaleRoutes = require("./routes/vehicleSaleRoutes");
 const serviceRoutes = require("./routes/serviceRoutes");
 const servicePartsRoutes = require("./routes/servicePartsRoutes");
+const serviceBillingRoutes = require("./routes/serviceBillingRoutes");
 const app = express();
 
 // Security middleware
@@ -66,6 +67,8 @@ app.use("/api/vehicle-units", vehicleUnitRoutes);
 app.use("/api/vehicle-sales", vehicleSaleRoutes);
 app.use("/api/services", serviceRoutes);
 app.use("/api/service-parts", servicePartsRoutes);
+
+app.use("/api/service-billing", serviceBillingRoutes);
 // Test route
 app.get("/", (req, res) => {
   res.status(200).json({

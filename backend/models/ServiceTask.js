@@ -4,7 +4,7 @@ const serviceTaskSchema = new mongoose.Schema(
   {
     jobCard: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "JobCard",
+      ref: "jobCard",
       required: [true, "Job card is required"],
       index: true,
     },
