@@ -25,6 +25,7 @@ const serviceRoutes = require("./routes/serviceRoutes");
 const servicePartsRoutes = require("./routes/servicePartsRoutes");
 const serviceBillingRoutes = require("./routes/serviceBillingRoutes");
 const counterBillingRoutes = require("./routes/counterBillingRoutes");
+const expenseRoutes = require("./routes/expenseRoutes");
 const app = express();
 
 // Security middleware
@@ -71,6 +72,7 @@ app.use("/api/service-parts", servicePartsRoutes);
 
 app.use("/api/service-billing", serviceBillingRoutes);
 app.use("/api/counter-billing", counterBillingRoutes);
+app.use("/api/expenses", expenseRoutes);
 // Test route
 app.get("/", (req, res) => {
   res.status(200).json({
