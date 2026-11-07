@@ -51,6 +51,7 @@ const stockMovementSchema = new mongoose.Schema(
         "purchase",
         "vehicleSale",
         "jobCard",
+        "counterSale",
         "manual",
         "return",
       ],
