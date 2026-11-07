@@ -112,4 +112,4 @@ vehicleSchema.index({ engineNumber: 1 }, { unique: true, sparse: true });
 
 vehicleSchema.index({ customer: 1, status: 1 });
 
-module.exports = mongoose.model("Vehicle", vehicleSchema);
+module.exports = mongoose.model("vehicle", vehicleSchema);

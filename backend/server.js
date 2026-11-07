@@ -21,6 +21,7 @@ const inventoryRoutes = require("./routes/inventoryRoutes");
 const vehicleModelRoutes = require("./routes/vehicleModelRoutes");
 const vehicleUnitRoutes = require("./routes/vehicleUnitRoutes");
 const vehicleSaleRoutes = require("./routes/vehicleSaleRoutes");
+const serviceRoutes = require("./routes/serviceRoutes");
 const app = express();
 
 // Security middleware
@@ -62,6 +63,7 @@ app.use("/api/inventory", inventoryRoutes);
 app.use("/api/vehicle-models", vehicleModelRoutes);
 app.use("/api/vehicle-units", vehicleUnitRoutes);
 app.use("/api/vehicle-sales", vehicleSaleRoutes);
+app.use("/api/services", serviceRoutes);
 // Test route
 app.get("/", (req, res) => {
   res.status(200).json({
