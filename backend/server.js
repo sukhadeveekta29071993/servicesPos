@@ -31,6 +31,8 @@ const supplierPaymentRoutes = require("./routes/supplierPaymentRoutes");
 
 const vendorOutstandingRoutes = require("./routes/vendorOutstandingRoutes");
 
+const vendorLedgerRoutes = require("./routes/vendorLedgerRoutes");
+
 const app = express();
 
 // Security middleware
@@ -84,6 +86,7 @@ app.use("/api/reports", reportRoutes);
 app.use("/api/supplier-payments", supplierPaymentRoutes);
 
 app.use("/api/vendor-outstanding", vendorOutstandingRoutes);
+app.use("/api/vendor-ledger", vendorLedgerRoutes);
 // Test route
 app.get("/", (req, res) => {
   res.status(200).json({
