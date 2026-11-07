@@ -8,19 +8,53 @@ const {
   getUnitsByVehicleModel,
   updateVehicleUnit,
   updateVehicleUnitStatus,
+  getVehicleUnitStockSummary,
 } = require("../controllers/vehicleUnitController");
 
 const { protect } = require("../middleware/authMiddleware");
+const { authorizeRoles } = require("../middleware/roleMiddleware");
 
-// Vehicle Unit / Stock
-router.post("/", protect, createVehicleUnit);
-router.get("/", protect, getVehicleUnits);
+// All routes require authentication
+router.use(protect);
 
-// Specific model units - keep this before /:id
-router.get("/model/:modelId", protect, getUnitsByVehicleModel);
+// View Vehicle Stock
+router.get(
+  "/",
+  authorizeRoles("admin", "salesperson", "mechanic", "cashier"),
+  getVehicleUnits,
+);
 
-router.get("/:id", protect, getVehicleUnitById);
-router.put("/:id", protect, updateVehicleUnit);
-router.patch("/:id/status", protect, updateVehicleUnitStatus);
+// Get units by Vehicle Model
+router.get(
+  "/model/:modelId",
+  authorizeRoles("admin", "salesperson", "mechanic", "cashier"),
+  getUnitsByVehicleModel,
+);
+
+// Get single Vehicle Unit
+router.get(
+  "/:id",
+  authorizeRoles("admin", "salesperson", "mechanic", "cashier"),
+  getVehicleUnitById,
+);
+
+// Vehicle Stock Summary
+router.get(
+  "/summary",
+  authorizeRoles("admin", "salesperson", "mechanic", "cashier"),
+  getVehicleUnitStockSummary,
+);
+// Admin Only - Add Vehicle Unit
+router.post("/", authorizeRoles("admin"), createVehicleUnit);
+
+// Admin Only - Update Vehicle Unit Details
+router.put("/:id", authorizeRoles("admin"), updateVehicleUnit);
+
+// Admin and Salesperson - Update Stock Status
+router.patch(
+  "/:id/status",
+  authorizeRoles("admin", "salesperson"),
+  updateVehicleUnitStatus,
+);
 
 module.exports = router;

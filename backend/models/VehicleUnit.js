@@ -4,7 +4,7 @@ const vehicleUnitSchema = new mongoose.Schema(
   {
     vehicleModel: {
       type: mongoose.Schema.Types.ObjectId,
-      ref: "VehicleModel",
+      ref: "vehicleModel",
       required: [true, "Vehicle model is required"],
       index: true,
     },
