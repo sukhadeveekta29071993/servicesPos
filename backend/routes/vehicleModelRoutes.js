@@ -10,12 +10,31 @@ const {
 } = require("../controllers/vehicleModelController");
 
 const { protect } = require("../middleware/authMiddleware");
+const { authorizeRoles } = require("../middleware/roleMiddleware");
 
-// Vehicle Model CRUD
-router.post("/", protect, createVehicleModel);
-router.get("/", protect, getVehicleModels);
-router.get("/:id", protect, getVehicleModelById);
-router.put("/:id", protect, updateVehicleModel);
-router.delete("/:id", protect, deleteVehicleModel);
+// All routes require authentication
+router.use(protect);
+
+// Read Vehicle Models
+router.get(
+  "/",
+  authorizeRoles("admin", "salesperson", "mechanic", "cashier"),
+  getVehicleModels,
+);
+
+router.get(
+  "/:id",
+  authorizeRoles("admin", "salesperson", "mechanic", "cashier"),
+  getVehicleModelById,
+);
+
+// Admin Only - Create Vehicle Model
+router.post("/", authorizeRoles("admin"), createVehicleModel);
+
+// Admin Only - Update Vehicle Model
+router.put("/:id", authorizeRoles("admin"), updateVehicleModel);
+
+// Admin Only - Deactivate Vehicle Model
+router.delete("/:id", authorizeRoles("admin"), deleteVehicleModel);
 
 module.exports = router;
